@@ -5,8 +5,6 @@
 #include <cstdlib>
 #include <ctime>
 
-#define var auto
-
 #define GAME_COUNT 1000
 #define NUM_OF_SIMULATIONS 100
 #define BOARD_SIZE 24
@@ -27,10 +25,10 @@ void calculateGameComplexityM2()
     srand(time(0));
     double simulationResults[NUM_OF_SIMULATIONS] = {};
 
-    for (var i = 0; i < NUM_OF_SIMULATIONS; ++i)
+    for (int i = 0; i < NUM_OF_SIMULATIONS; ++i)
     {
         int correctBoardCount = 0;
-        for (var j = 0; j < GAME_COUNT; ++j)
+        for (int j = 0; j < GAME_COUNT; ++j)
         {
             Pawn board[BOARD_SIZE] = {};
             for (Pawn& pawn : board)
