@@ -4,16 +4,15 @@
 #include <vector>
 #include <algorithm>
 
-#define BOARD_SIZE 24
-
-enum class Pawn { none, black, white };
+#include "Config.h"
 
 std::map<int, std::vector<int>> possibleMoves =
-{{0, {1, 3, 9}},{1, {0, 2, 4}},{2, {1, 5, 14} }, { 3, {0, 4, 10, 6} }, { 4, {1, 3, 5, 7} },
-{ 5, {2, 4, 13, 8} }, { 6, {3, 7, 11} }, { 7, {6, 8, 4} }, { 8, {5, 7 ,12 }},{9, {0, 10, 21} },
-{ 10, {3, 9, 11, 18}},{11, {6, 10 ,15}},{12, {8, 13, 17}},{13, {5, 12, 14, 20}}, {14, {2, 13, 23}},
-{ 15, {11, 16, 18}},{16, {15, 17, 19}},{17, {12, 16, 20}},{18, {10, 15, 19, 21}},{19, {16, 18, 20, 22}},
-{ 20, {13, 17, 19, 23}},{21, {9, 18, 22}},{22, {19, 21, 23}},{23, {22, 20, 14}} };
+{
+	{0, {1, 3, 9}}, {1, {0, 2, 4}}, {2, {1, 5, 14}}, {3, {0, 4, 10, 6}}, {4, {1, 3, 5, 7}}, {5, {2, 4, 13, 8}},
+	{6, {3, 7, 11}}, {7, {6, 8, 4}}, {8, {5, 7 ,12}}, {9, {0, 10, 21}}, {10, {3, 9, 11, 18}}, {11, {6, 10 ,15}},
+	{12, {8, 13, 17}}, {13, {5, 12, 14, 20}}, {14, {2, 13, 23}}, {15, {11, 16, 18}}, {16, {15, 17, 19}}, {17, {12, 16, 20}},
+	{18, {10, 15, 19, 21}}, {19, {16, 18, 20, 22}}, {20, {13, 17, 19, 23}}, {21, {9, 18, 22}}, {22, {19, 21, 23}}, {23, {22, 20, 14}}
+};
 
 std::vector<std::vector<int>> possibleLines =
 {
@@ -25,20 +24,40 @@ std::vector<std::vector<int>> possibleLines =
 	{0, 3, 6}, {2, 5, 8}, {17, 20, 23}, {15, 18, 21} //diagonall-intersections
 };
 
-std::vector<int> findPossibleMoves(Pawn board[BOARD_SIZE], int pawn) //TODO: test
+std::vector<int> findFreeSpaces(Pawn board[BOARD_SIZE])
 {
-	std::vector<int> moves = possibleMoves[pawn];
-	std::remove_if(moves.begin(), moves.end(), [&](int pawn) { return board[pawn] != Pawn::none; });
+	std::vector<int> freeSpaces;
+	for (int i = 0; i < BOARD_SIZE; ++i)
+		if (board[i] == Pawn::none)
+			freeSpaces.push_back(i);
+
+	return freeSpaces;
 }
 
-bool isPawnInLine(Pawn board[BOARD_SIZE], int pawn) //TODO: test2
+std::vector<std::pair<int, int>> findPossibleMovesInSecondPhase(Pawn board[BOARD_SIZE], Pawn player)
+{
+	std::vector<std::pair<int, int>> moves;
+	for (int i = 0; i < BOARD_SIZE; ++i)
+		if (board[i] == player)
+		{
+			std::vector<int> pawnMoves = possibleMoves[i];
+			pawnMoves.erase(std::remove_if(pawnMoves.begin(), pawnMoves.end(), [&](int pawn) { return board[pawn] != Pawn::none; }), pawnMoves.end());
+
+			for (int move : pawnMoves)
+				moves.push_back(std::pair<int, int>(i, move));
+		}
+	
+	return moves;
+}
+
+bool isPawnInLine(Pawn board[BOARD_SIZE], int pawnPosition)
 {
 	for (int i = 0; i < possibleLines.size(); ++i)
-		if (std::find(possibleLines[i].begin(), possibleLines[i].end(), pawn) != possibleLines[i].end())
+		if (std::find(possibleLines[i].begin(), possibleLines[i].end(), pawnPosition) != possibleLines[i].end())
 		{
 			bool isLineFormed = true;
 			for (int j = 0; j < possibleLines[i].size(); ++j)
-				if (board[possibleLines[i][j]] != board[pawn])
+				if (board[possibleLines[i][j]] != board[pawnPosition])
 					isLineFormed = false;
 
 			if (isLineFormed)
@@ -50,5 +69,27 @@ bool isPawnInLine(Pawn board[BOARD_SIZE], int pawn) //TODO: test2
 
 void calculateGameComplexityM1()
 {
+	Pawn playerTurn = Pawn::white;
+	bool isGameWon = false;
 
+	std::vector<int> possibleMovesInTurns;
+
+	int turn = 0;
+
+	while (!isGameWon)
+	{
+		++turn;
+
+		//Phase 1
+		if (turn <= 16)
+		{
+
+		}
+		else
+		{
+			//Phase 2
+
+			//Phase 3
+		}
+	}
 }
