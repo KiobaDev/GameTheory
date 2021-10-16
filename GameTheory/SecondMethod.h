@@ -5,19 +5,17 @@
 #include <cstdlib>
 #include <ctime>
 
-#define GAME_COUNT 1000
-#define NUM_OF_SIMULATIONS 100
-#define BOARD_SIZE 24
-#define NUM_OF_STATES 24 * 24 * 24
-
-enum class Pawn { none, black, white };
+#include "Config.h"
 
 bool isBoardCorrect(Pawn board[18])
 {
     int whitePawns = std::count(board, board + BOARD_SIZE, Pawn::white);
     int blackPawns = std::count(board, board + BOARD_SIZE, Pawn::black);
 
-    return !(whitePawns < 2 || whitePawns > 8 || blackPawns < 2 || blackPawns > 8 || (whitePawns == 2 && blackPawns == 2));
+    return !(whitePawns > 9 || blackPawns > 9 ||
+        (std::min(whitePawns, blackPawns) == 0 && std::max(whitePawns, blackPawns) > 1) ||
+        (std::min(whitePawns, blackPawns) == 1 && std::max(whitePawns, blackPawns) > 3) ||
+        (std::min(whitePawns, blackPawns) == 2 && std::max(whitePawns, blackPawns) > 5));
 }
 
 void calculateGameComplexityM2()
