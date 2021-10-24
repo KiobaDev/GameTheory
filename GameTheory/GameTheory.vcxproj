@@ -144,6 +144,8 @@
   <ItemGroup>
     <ClInclude Include="Config.h" />
     <ClInclude Include="FirstMethod.h" />
+    <ClInclude Include="NMMBoard.h" />
+    <ClInclude Include="NMMTree.h" />
     <ClInclude Include="SecondMethod.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
