@@ -146,6 +146,7 @@
     <ClInclude Include="FirstMethod.h" />
     <ClInclude Include="NMMBoard.h" />
     <ClInclude Include="NMMEvaluation.h" />
+    <ClInclude Include="NMMMinimax.h" />
     <ClInclude Include="NMMTree.h" />
     <ClInclude Include="SecondMethod.h" />
   </ItemGroup>
