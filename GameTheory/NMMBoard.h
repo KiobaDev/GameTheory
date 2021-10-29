@@ -184,7 +184,7 @@ namespace NMM
 			board[fromPoint] = 0;
 		}
 
-		bool isPawnInLine(int point)
+		bool isPawnInLine(int point) const
 		{
 			int pawn = board[point];
 			std::vector<int>* ptrToPossibleLines = &possibleBoardLines[point];
@@ -197,7 +197,7 @@ namespace NMM
 			return isPointInLine;
 		}
 
-		int getOpponent(int player)
+		int getOpponent(int player) const
 		{
 			return (player % 2) + 1;
 		}
