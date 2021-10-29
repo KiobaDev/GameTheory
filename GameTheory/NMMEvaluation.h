@@ -108,9 +108,3 @@ namespace NMM
 		}
 	}
 }
-
-//Evaluation function for Phase 1 = 18 * (1) + 26 * (2) + 1 * (3) + 9 * (4) + 10 * (5) + 7 * (6)
-
-//Evaluation function for Phase 2 =  + 8 * (7) + 1086 * (8)
-
-//Evaluation function for Phase 3 = 16 * (1) + 10 * (5) + 1 * (6) + 1190 * (8)
