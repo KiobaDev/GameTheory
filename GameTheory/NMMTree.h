@@ -27,5 +27,16 @@ namespace NMM
 			for (NMM::BoardState& possibleMove : board.possibleMoves(player))
 				children.push_back(new Node(possibleMove));
 		}
+
+		void generateChildrenToNthDepth(int player, int maxDepth, int depth = 1)
+		{
+			generateChildren(player);
+
+			++depth;
+
+			if (depth < maxDepth)
+				for (Node* child : children)
+					child->generateChildrenToNthDepth(board.getOpponent(player), maxDepth, depth);
+		}
 	};
 }
