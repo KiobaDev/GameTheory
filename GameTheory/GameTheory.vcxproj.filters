@@ -35,5 +35,8 @@
     <ClInclude Include="NMMTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NMMEvaluation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
