@@ -86,7 +86,7 @@ namespace NMM
 
 	int NMMEvaluation(const NMM::BoardState& previousBoard, const NMM::BoardState& board, int player)
 	{
-		if (board.ply <= 18)
+		if (board.ply < 18)
 		{
 			return 18 * (closedMorris(previousBoard, board, player) - closedMorris(previousBoard, board, board.getOpponent(player))) +
 				26 * (numberOfMorrises(board, player) - numberOfMorrises(board, board.getOpponent(player))) +
