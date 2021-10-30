@@ -9,7 +9,7 @@ namespace NMM
 {
 	int minimax(NMM::Node* parent, NMM::Node* tree, int depth, int player, bool maximalizedPlayer)
 	{
-		if (depth == 0 || isPlayerWinning(tree->board, player))
+		if (depth == 1 || isPlayerWinning(tree->board, player))
 			return NMM::NMMEvaluation(parent->board, tree->board, player);
 		
 		if (maximalizedPlayer)
@@ -18,7 +18,7 @@ namespace NMM
 
 			for (NMM::Node* child : tree->children)
 			{
-				int eval = minimax(tree, child, depth - 1, tree->board.getOpponent(player), false);
+				int eval = minimax(tree, child, depth - 1, player, false);
 				maxEval = std::max(maxEval, eval);
 			}
 
@@ -30,7 +30,7 @@ namespace NMM
 
 			for (NMM::Node* child : tree->children)
 			{
-				int eval = minimax(tree, child, depth - 1, tree->board.getOpponent(player), true);
+				int eval = minimax(tree, child, depth - 1, player, true);
 				minEval = std::min(minEval, eval);
 			}
 
@@ -45,7 +45,7 @@ namespace NMM
 
 		for (NMM::Node* child : tree->children)
 		{
-			int eval = minimax(tree, child, depth - 1, tree->board.getOpponent(player), false);
+			int eval = minimax(tree, child, depth - 1, player, false);
 
 			if (eval > maxEval)
 			{

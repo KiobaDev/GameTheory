@@ -22,6 +22,17 @@ namespace NMM
 			board = other;
 		}
 
+		~Node()
+		{
+			for (Node* child : children)
+			{
+				delete child;
+				child = nullptr;
+			}
+
+			children.clear();
+		}
+
 		void generateChildren(int player)
 		{
 			for (NMM::BoardState& possibleMove : board.possibleMoves(player))
@@ -32,11 +43,9 @@ namespace NMM
 		{
 			generateChildren(player);
 
-			++depth;
-
 			if (depth < maxDepth)
 				for (Node* child : children)
-					child->generateChildrenToNthDepth(board.getOpponent(player), maxDepth, depth);
+					child->generateChildrenToNthDepth(board.getOpponent(player), maxDepth, depth + 1);
 		}
 	};
 }
