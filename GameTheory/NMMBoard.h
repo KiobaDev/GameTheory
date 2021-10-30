@@ -47,7 +47,7 @@ namespace NMM
 		{
 			int playerPawnCount = std::count(board, board + 24, player);
 
-			if (ply <= 18)
+			if (ply < 18)
 				return possibleMovesPhaseOne(player);
 			else if (playerPawnCount <= 3)
 				return possibleMovesPhaseThree(player);
@@ -58,7 +58,7 @@ namespace NMM
 		std::vector<BoardState> possibleMovesPhaseOne(int player)
 		{
 			std::vector<BoardState> possibleMoves;
-
+ 
 			for (int i = 0; i < 24; ++i) 
 			{
 				if (board[i] == 0)
@@ -66,27 +66,42 @@ namespace NMM
 					BoardState newBoardState = *this;
 					newBoardState.insertPawn(i, player);
 					++newBoardState.ply;
-
-					if (newBoardState.isPawnInLine(i))
-					{
-						for(int j = 0; j < 24; ++j)
-						{
-							if (newBoardState.board[j] == getOpponent(player)) 
-							{
-								BoardState newBoardStateForRemove = newBoardState;
-								newBoardStateForRemove.removePawn(j);
-
-								possibleMoves.push_back(newBoardStateForRemove);
-							}
-						}
-					}
-					else
-						possibleMoves.push_back(newBoardState);
+ 
+					std::vector<BoardState> boardStatesAfterRemoves = possibleRemoves(newBoardState, i, player);
+ 
+                    possibleMoves.insert(possibleMoves.end(),boardStatesAfterRemoves.begin(),boardStatesAfterRemoves.end());
 				}
 			}
-
+ 
 			return possibleMoves;
 		}
+
+		std::vector<BoardState> possibleRemoves(BoardState newBoardState, int point, int player)
+		{
+		    std::vector<BoardState> boardeStatesForRemove;
+		    
+            if (newBoardState.isPawnInLine(point))
+			{
+				for(int j = 0; j < 24; ++j)
+				{
+					if (newBoardState.board[j] == getOpponent(player)) 
+					{
+					    if(newBoardState.isPawnInLine(j) && (std::count(newBoardState.board, newBoardState.board +24, getOpponent(player)) > 3))
+					        continue;
+					    
+						BoardState newBoardStateForRemove = newBoardState;
+						newBoardStateForRemove.removePawn(j);
+
+						boardeStatesForRemove.push_back(newBoardStateForRemove);
+					}
+				}
+			}
+			else
+				boardeStatesForRemove.push_back(newBoardState);
+				
+			return boardeStatesForRemove;
+		}
+
 
 		std::vector<BoardState> possibleMovesPhaseTwo(int player)
 		{
@@ -104,21 +119,9 @@ namespace NMM
 							newBoardState.movePawnFromTo(i, k);
 							++newBoardState.ply;
 
-							if (newBoardState.isPawnInLine(k))
-							{
-								for (int j = 0; j < 24; ++j)
-								{
-									if (newBoardState.board[j] == getOpponent(player))
-									{
-										BoardState newBoardStateForRemove = newBoardState;
-										newBoardStateForRemove.removePawn(j);
-
-										possibleMoves.push_back(newBoardStateForRemove);
-									}
-								}
-							}
-							else
-								possibleMoves.push_back(newBoardState);
+							std::vector<BoardState> boardStatesAfterRemoves = possibleRemoves(newBoardState, k, player);
+							
+							possibleMoves.insert(possibleMoves.end(),boardStatesAfterRemoves.begin(),boardStatesAfterRemoves.end());
 						}
 					}
 				}
@@ -143,21 +146,9 @@ namespace NMM
 							newBoardState.movePawnFromTo(i, k);
 							++newBoardState.ply;
 
-							if (newBoardState.isPawnInLine(k))
-							{
-								for (int j = 0; j < 24; ++j)
-								{
-									if (newBoardState.board[j] == getOpponent(player))
-									{
-										BoardState newBoardStateForRemove = newBoardState;
-										newBoardStateForRemove.removePawn(j);
+							std::vector<BoardState> boardStatesAfterRemoves = possibleRemoves(newBoardState, k, player);
 
-										possibleMoves.push_back(newBoardStateForRemove);
-									}
-								}
-							}
-							else
-								possibleMoves.push_back(newBoardState);
+							possibleMoves.insert(possibleMoves.end(),boardStatesAfterRemoves.begin(),boardStatesAfterRemoves.end());
 						}
 					}
 				}
