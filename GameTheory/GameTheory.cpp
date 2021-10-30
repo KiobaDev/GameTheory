@@ -67,5 +67,5 @@ int main()
 		std::cout << "Player 1 won games: " << player1WonGames << "\tPlayer 2 won games: " << player2WonGames << "\tDraws count: " << draws << std::endl;
 	}
 
-	std::cin.get();
+	system("pause");
 }
