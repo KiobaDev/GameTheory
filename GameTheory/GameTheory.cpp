@@ -29,7 +29,7 @@ int main()
 				delete tree;
 				break;
 			}
-			b1 = NMM::bestMove(tree, 1, depth + 1);
+			b1 = NMM::minimaxBestMove(tree, 1, depth + 1);
 
 			if (NMM::isPlayerWinning(b1, 1))
 			{

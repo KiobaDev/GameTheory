@@ -38,7 +38,7 @@ namespace NMM
 		}
 	}
 
-	NMM::BoardState bestMove(NMM::Node* tree, int player, int depth)
+	NMM::BoardState minimaxBestMove(NMM::Node* tree, int player, int depth)
 	{
 		int maxEval = INT_MIN;
 		NMM::BoardState bestState;
