@@ -68,9 +68,4 @@ int main()
 	}
 
 	system("pause");
-<<<<<<< HEAD:GameTheory/MinimaxMain.cpp
 }
-=======
-
-}
->>>>>>> c1091bbbd6235d9d8687214c60a3c4bc1cd3a2ae:GameTheory/Minimax/MinimaxMain.cpp
