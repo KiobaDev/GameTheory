@@ -18,9 +18,15 @@
     <Filter Include="Configurations">
       <UniqueIdentifier>{71aa09be-da88-440b-ada5-525694fbc044}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Minimax\Negamax">
+      <UniqueIdentifier>{14576e2b-0e36-4844-95b3-83bf4637dbaa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameTheory.cpp">
+    <ClCompile Include="MinimaxMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NegamaxMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -45,6 +51,9 @@
     </ClInclude>
     <ClInclude Include="Config.h">
       <Filter>Configurations</Filter>
+    </ClInclude>
+    <ClInclude Include="NMMNegamax.h">
+      <Filter>Minimax\Negamax</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

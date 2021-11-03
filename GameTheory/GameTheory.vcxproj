@@ -139,7 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GameTheory.cpp" />
+    <ClCompile Include="MinimaxMain.cpp" />
+    <ClCompile Include="NegamaxMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Config.h" />
@@ -147,6 +148,7 @@
     <ClInclude Include="NMMBoard.h" />
     <ClInclude Include="NMMEvaluation.h" />
     <ClInclude Include="NMMMinimax.h" />
+    <ClInclude Include="NMMNegamax.h" />
     <ClInclude Include="NMMTree.h" />
     <ClInclude Include="SecondMethod.h" />
   </ItemGroup>
