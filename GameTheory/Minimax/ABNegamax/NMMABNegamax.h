@@ -12,13 +12,11 @@ namespace NMM
 		if (depth == 1 || isPlayerWinning(tree->board, player))
 			return NMM::NMMEvaluation(parent->board, tree->board, player);
 
-		int maxEval = INT_MIN;
-
 		tree->generateChildren(player);
 		for (NMM::Node* child : tree->children)
 		{
 			int eval = -ABnegamax(tree, child, depth - 1, player % 2 + 1, -beta, -alpha);
-			maxEval = std::max(maxEval, eval);
+			alpha = std::max(alpha, eval);
 
 			if (alpha >= beta)
 				break;
@@ -34,7 +32,6 @@ namespace NMM
 
 	NMM::BoardState ABnegamaxBestMove(NMM::Node* tree, int player, int depth)
 	{
-		int maxEval = INT_MIN;
 		NMM::BoardState bestState;
 
 		int alpha = INT_MIN;
@@ -43,12 +40,12 @@ namespace NMM
 		tree->generateChildren(player);
 		for (NMM::Node* child : tree->children)
 		{
-			int eval = ABnegamax(tree, child, depth - 1, player, -beta, -alpha);
+			int eval = ABnegamax(tree, child, depth - 1, player, alpha, beta);
 
-			if (eval > maxEval)
+			if (eval > alpha)
 			{
 				bestState = child->board;
-				maxEval = eval;
+				alpha = eval;
 			}
 
 			if (alpha >= beta)
