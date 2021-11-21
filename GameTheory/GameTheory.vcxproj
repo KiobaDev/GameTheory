@@ -18,6 +18,22 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Complexity\Config.h" />
+    <ClInclude Include="Complexity\FirstMethod.h" />
+    <ClInclude Include="Complexity\SecondMethod.h" />
+    <ClInclude Include="Minimax\ABNegamax\NMMABNegamax.h" />
+    <ClInclude Include="Minimax\Negamax\NMMNegamax.h" />
+    <ClInclude Include="Minimax\NMMBoard.h" />
+    <ClInclude Include="Minimax\NMMEvaluation.h" />
+    <ClInclude Include="Minimax\NMMMinimax.h" />
+    <ClInclude Include="Minimax\NMMTree.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Minimax\ABNegamax\ABNegamaxMain.cpp" />
+    <ClCompile Include="Minimax\MinimaxMain.cpp" />
+    <ClCompile Include="Minimax\Negamax\NegamaxMain.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -138,20 +154,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="MinimaxMain.cpp" />
-    <ClCompile Include="NegamaxMain.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Config.h" />
-    <ClInclude Include="FirstMethod.h" />
-    <ClInclude Include="NMMBoard.h" />
-    <ClInclude Include="NMMEvaluation.h" />
-    <ClInclude Include="NMMMinimax.h" />
-    <ClInclude Include="NMMNegamax.h" />
-    <ClInclude Include="NMMTree.h" />
-    <ClInclude Include="SecondMethod.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
