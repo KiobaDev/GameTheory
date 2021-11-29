@@ -35,6 +35,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Minimax\ABNegamax\NMMABNegamax.h" />
+    <ClInclude Include="Minimax\SortABNegamax\NMMSortABNegamax.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Minimax\Negamax\NegamaxMain.cpp">
@@ -44,6 +45,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Minimax\ABNegamax\ABNegamaxMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Minimax\SortABNegamax\SortABNegamaxMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
