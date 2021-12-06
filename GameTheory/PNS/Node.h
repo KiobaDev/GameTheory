@@ -9,30 +9,6 @@ namespace NMM
 {
 	namespace PNS
 	{
-		/*std::vector<int*> lastMoves;
-		void addMoveToLastMoves(int* move)
-		{
-			int* lastMove = new int[24];
-			std::copy(move, move + 24, lastMove);
-
-			lastMoves.push_back(lastMove);
-		}
-		bool isMoveInLastMoves(int* move)
-		{
-			bool exists = false;
-
-			for (int* lastMove : lastMoves)
-			{
-				if (std::equal(move, move + 24, lastMove))
-				{
-					exists = true;
-					break;
-				}
-			}
-
-			return exists;
-		}*/
-
 		class Node
 		{
 		public:
@@ -65,9 +41,6 @@ namespace NMM
 			{
 				for (NMM::BoardState move : board.possibleMoves(board.playerTurn))
 				{
-					//if (isMoveInLastMoves(move.board))
-					//	continue;
-
 					Node* child = new Node(move, (type == NodeType::And ? NodeType::Or : NodeType::And), this);
 
 					children.push_back(child);
