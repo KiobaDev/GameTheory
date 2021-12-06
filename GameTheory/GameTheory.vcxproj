@@ -29,12 +29,18 @@
     <ClInclude Include="Minimax\NMMMinimax.h" />
     <ClInclude Include="Minimax\NMMTree.h" />
     <ClInclude Include="Minimax\SortABNegamax\NMMSortABNegamax.h" />
+    <ClInclude Include="PNS\Config.h" />
+    <ClInclude Include="PNS\Enums.h" />
+    <ClInclude Include="PNS\Evaluation.h" />
+    <ClInclude Include="PNS\Node.h" />
+    <ClInclude Include="PNS\PNS.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Minimax\ABNegamax\ABNegamaxMain.cpp" />
     <ClCompile Include="Minimax\MinimaxMain.cpp" />
     <ClCompile Include="Minimax\Negamax\NegamaxMain.cpp" />
     <ClCompile Include="Minimax\SortABNegamax\SortABNegamaxMain.cpp" />
+    <ClCompile Include="PNS\PNSMain.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

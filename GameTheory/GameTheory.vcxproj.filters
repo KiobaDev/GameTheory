@@ -36,6 +36,11 @@
     </ClInclude>
     <ClInclude Include="Minimax\ABNegamax\NMMABNegamax.h" />
     <ClInclude Include="Minimax\SortABNegamax\NMMSortABNegamax.h" />
+    <ClInclude Include="PNS\Config.h" />
+    <ClInclude Include="PNS\Enums.h" />
+    <ClInclude Include="PNS\Evaluation.h" />
+    <ClInclude Include="PNS\Node.h" />
+    <ClInclude Include="PNS\PNS.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Minimax\Negamax\NegamaxMain.cpp">
@@ -48,6 +53,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Minimax\SortABNegamax\SortABNegamaxMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PNS\PNSMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -27,11 +27,13 @@ namespace NMM
 	public:
 		int* board;
 		int ply;
+		int playerTurn;
 
 		BoardState()
 		{
 			board = new int[24]{};
 			ply = 0;
+			playerTurn = 0;
 		}
 
 		BoardState(const BoardState& other)
@@ -39,6 +41,7 @@ namespace NMM
 		{
 			std::copy(other.board, other.board + 24, board);
 			ply = other.ply;
+			playerTurn = other.playerTurn;
 		}
 
 		~BoardState()
@@ -98,6 +101,7 @@ namespace NMM
 					BoardState newBoardState = *this;
 					newBoardState.insertPawn(i, player);
 					++newBoardState.ply;
+					newBoardState.playerTurn = getOpponent(player);
 					
 					std::vector<BoardState> boardStatesAfterRemoves = possibleRemoves(newBoardState, i, player);
 
@@ -123,6 +127,7 @@ namespace NMM
 							BoardState newBoardState = *this;
 							newBoardState.movePawnFromTo(i, possibleBoardMoves[i][k]);
 							++newBoardState.ply;
+							newBoardState.playerTurn = getOpponent(player);
 
 							std::vector<BoardState> boardStatesAfterRemoves = possibleRemoves(newBoardState, possibleBoardMoves[i][k], player);
 							
@@ -150,6 +155,7 @@ namespace NMM
 							BoardState newBoardState = *this;
 							newBoardState.movePawnFromTo(i, k);
 							++newBoardState.ply;
+							newBoardState.playerTurn = getOpponent(player);
 
 							std::vector<BoardState> boardStatesAfterRemoves = possibleRemoves(newBoardState, k, player);
 
@@ -202,6 +208,7 @@ namespace NMM
 		{
 			std::copy(other.board, other.board + 24, board);
 			ply = other.ply;
+			playerTurn = other.playerTurn;
 
 			return *this;
 		}
